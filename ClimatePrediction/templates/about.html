@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}About Climate Predict{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>About Climate Predict</h1>
+</section>
+
+<section class="about-content">
+    <div class="card">
+        <h2>Our Mission</h2>
+        <p>Climate Predict is dedicated to providing accurate and accessible climate predictions to help individuals, communities, and organizations better understand and prepare for changing climate conditions.</p>
+        <p>We believe that data-driven insights can play a crucial role in adapting to climate change and fostering more sustainable practices.</p>
+    </div>
+    
+    <div class="card">
+        <h2>Our Technology</h2>
+        <p>Climate Predict uses advanced ML algorithms trained on historical climate data to generate predictions for temperature, humidity, precipitation, and wind speed.</p>
+        
+        <h3>The Model</h3>
+        <p>Our climate prediction model incorporates:</p>
+        <ul>
+            <li>Historical weather patterns from multiple locations worldwide</li>
+            <li>Seasonal variations and yearly climate trends</li>
+            <li>Geographical factors that influence local climate conditions</li>
+        </ul>
+        
+        <h3>Prediction Accuracy</h3>
+        <p>While our model strives for high accuracy, predictions inherently involve some uncertainty. The further into the future we predict, the more this uncertainty increases. We continually refine our model to improve accuracy.</p>
+    </div>
+    
+    <div class="card">
+        <h2>How To Use Climate Predict</h2>
+        <ol>
+            <li>Select the number of days you want to predict (from 1 to 7 days)</li>
+            <li>Verify or update your location</li>
+            <li>Click the "Predict Climate" button</li>
+            <li>View the results in chart or table format</li>
+        </ol>
+        <p>You can switch between different metrics (temperature, humidity, precipitation, wind speed) to focus on the climate variables most relevant to your needs.</p>
+    </div>
+</section>
+{% endblock %}

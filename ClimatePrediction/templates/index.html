@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Climate Change Prediction{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Climate Change Prediction</h1>
+    </div>
+</section>
+
+<section class="prediction-panel">
+    <div class="card">
+        <h2>Climate Prediction Tool</h2>
+        <p>Select the number of days to predict climate conditions:</p>
+        
+        <div class="days-filter">
+            <button class="day-btn" data-days="1">1 Day</button>
+            <button class="day-btn" data-days="2">2 Days</button>
+            <button class="day-btn" data-days="3">3 Days</button>
+            <button class="day-btn" data-days="4">4 Days</button>
+            <button class="day-btn" data-days="5">5 Days</button>
+            <button class="day-btn" data-days="6">6 Days</button>
+            <button class="day-btn active" data-days="7">7 Days</button>
+        </div>
+        
+        <div class="location-info">
+            <h3>Location</h3>
+            <div id="location-display">
+                <p><i class="fas fa-map-marker-alt"></i> <span id="location-text">Detecting your location...</span></p>
+                <button id="change-location" class="secondary-btn">Change</button>
+            </div>
+            <div id="location-form" class="hidden">
+                <div class="form-group">
+                    <label for="latitude">Latitude:</label>
+                    <input type="number" id="latitude" step="0.0001" min="-90" max="90">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude:</label>
+                    <input type="number" id="longitude" step="0.0001" min="-180" max="180">
+                </div>
+                <button id="save-location" class="secondary-btn">Save</button>
+            </div>
+        </div>
+        
+        <button id="predict-btn" class="primary-btn">
+            <i class="fas fa-cloud-sun"></i> Predict Climate
+        </button>
+        
+        <div id="loading-indicator" class="hidden">
+            <div class="spinner"></div>
+            <p>Analyzing climate data...</p>
+        </div>
+    </div>
+</section>
+
+<section id="results-section" class="hidden">
+    <div class="card results-card">
+        <h2>Climate Predictions</h2>
+        <div class="tabs">
+            <button class="tab-btn active" data-view="chart">Chart View</button>
+            <button class="tab-btn" data-view="table">Table View</button>
+        </div>
+        
+        <div id="chart-view" class="tab-content">
+            <div class="chart-controls">
+                <div class="metric-selector">
+                    <button class="metric-btn active" data-metric="temperature">Temperature</button>
+                    <button class="metric-btn" data-metric="humidity">Humidity</button>
+                    <button class="metric-btn" data-metric="precipitation">Precipitation</button>
+                    <button class="metric-btn" data-metric="wind_speed">Wind Speed</button>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="climate-chart"></canvas>
+            </div>
+        </div>
+        
+        <div id="table-view" class="tab-content hidden">
+            <table id="predictions-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Temperature (°C)</th>
+                        <th>Humidity (%)</th>
+                        <th>Precipitation (mm)</th>
+                        <th>Wind Speed (km/h)</th>
+                    </tr>
+                </thead>
+                <tbody id="predictions-tbody">
+                    <!-- Will be populated with JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="info-section">
+    <div class="card">
+        <h2>Understanding Climate Change</h2>
+        <p>Our predictions take into account historical climate data and current trends to provide accurate forecasts. The model considers temperature variations, humidity patterns, precipitation levels, and wind speed changes.</p>
+        <p>Climate change affects these variables in complex ways. By monitoring these predictions, you can better understand how our climate is evolving over time.</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Initialize the days filter with the default value (7)
+    let selectedDays = 7;
+</script>
+{% endblock %}
